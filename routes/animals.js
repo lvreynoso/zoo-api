@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var exibits = require('./exibits')
 var zoo = require('./../database/zoo')
 
 // get a list of objects
@@ -42,5 +43,7 @@ router.delete(`/:id`, (req, res) => {
     delete zoo[animalID]
     res.status(200).send(deletedAnimal)
 })
+
+router.use('/:animalId/exibits/', exibits)
 
 module.exports = router
